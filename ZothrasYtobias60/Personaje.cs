@@ -30,8 +30,28 @@ namespace ZothrasYTobias
             Mana = int.Parse(Console.ReadLine());
         }
 
-       
+        public int RecibirDaño(int FuerAtac)
+        {
+            int daño = FuerAtac - Defensa;
+            if(daño<0)
+            {
+                daño = 0;
+            }
+            Vida-=daño;
 
+            return daño;
+        }
+        public int Atacar(Personaje o)
+        {
+            if (Mana>0)
+            {
+                Mana--;
+                return o.RecibirDaño(Fuerza);
+            }
+            else
+            {
+                return 0;
+            }
 
     }
 }
