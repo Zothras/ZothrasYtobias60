@@ -72,26 +72,41 @@ Console.WriteLine("2: Recibir Daño ");
 Console.WriteLine("3: Atacar ");
 string accion = Console.ReadLine(); 
 
-switch (accion)
+do
 {
+    Console.Clear();
+    Console.WriteLine("Personaje 1");
+    Muestra(p1);
+    Console.WriteLine("Personaje 2");
+    Muestra(p2);
+    Console.WriteLine("ingrese una opcion");
+    Console.WriteLine("1: cambiar color");
+    Console.WriteLine("2: Recibir daño");
+    Console.WriteLine("3: atacar");
+    swit = int.Parse(Console.ReadLine());
+    switch (swit)
+    {
+        case Cambiar color:
+            Console.WriteLine("elija otro color");
+            p1.CambiarColor(Console.ReadLine());
+            break;
+        case Recibir daño:
+            Console.WriteLine("ingrese el daño recibido");
+            p1.RecibirDaño(int.Parse(Console.ReadLine()));
+            break;
+            case Atacar:
+            p1.Atacar(p2);
+            break;
 
-    case "Cambiar Color":
-        CambioDeColor(p1);
-        Console.WriteLine("Los datos de su personaje son: ");
-        mostramela(p1);
-        break;
-
-    case "Recibir Daño":
-        RecibirDaño(p1);
-        Console.WriteLine("Los datos de su personaje son: ");
-        mostramela(p1);
-        break;
-
-    case "Atacar":
-        Console.WriteLine("1: 3 ");
-
-        break;
-}
+        default:
+            Console.WriteLine("Hay un dicho en este planeta... 'Tonto como una piedra'. No es un cumplido -Aurelion Sol (Ingrese una opcion correcta) ");
+            break;
+    }
+    if(p2.Vida==0)
+    {
+        Console.WriteLine("Ganaste");
+    }
+} while (p2.Vida!=0);
 
 Console.ReadKey();
 
